@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CalculationService } from 'src/app/services/calculation.service';
 
 @Component({
   selector: 'calc-buttons',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ButtonsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private calculationService: CalculationService) { }
 
   ngOnInit(): void {
+  }
+
+  handleClick(input: string) {
+    this.calculationService.handleInput(input);
   }
 
 }

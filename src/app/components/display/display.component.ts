@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CalculationService } from 'src/app/services/calculation.service';
 
 @Component({
   selector: 'calc-display',
@@ -8,10 +9,21 @@ import { Component, OnInit } from '@angular/core';
 export class DisplayComponent implements OnInit {
   output: string;
 
-  constructor() { }
+  constructor(private calculationService: CalculationService) { 
+    this.resetOutput();
+    this.calculationService.updated$.subscribe(() => {
+      this.output = this.calculationService.currentCalculation.toString();
+      if (this.output === "") {
+        this.resetOutput();
+      }
+    });
+  }
 
   ngOnInit(): void {
-    this.output = "1 + 1"; // TODO read from service
+  }
+
+  resetOutput() {
+    this.output = "bereit";
   }
 
 }
