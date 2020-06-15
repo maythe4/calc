@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HistoryService } from 'src/app/services/history.service';
 
 @Component({
   selector: 'calc-history',
@@ -8,12 +9,17 @@ import { Component, OnInit } from '@angular/core';
 export class HistoryComponent implements OnInit {
   entries: string[];
 
-  constructor() { }
+  constructor(private historyService: HistoryService) { 
+    this.historyService.updated$.subscribe(() => {
+    this.entries = this.historyService.entries;
+  });}
 
   ngOnInit(): void {
-    this.entries = [
-      "2020-06-14 13:03:27: 1 + 1 = 2",
-      "2020-06-14 13:03:44: 2 + 2 = 4"];
+    this.entries = [];
+  }
+
+  deleteHistory() {
+    this.historyService.deleteHistory();
   }
 
 }

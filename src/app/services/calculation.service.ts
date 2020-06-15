@@ -73,13 +73,13 @@ export class CalculationService {
   private calculate() {
     if (this.currentCalculation.calculate())
     {
+      this.lastCalculation = this.currentCalculation;
       this.updatedSource.next();
       this.calculatedSource.next();
     }
   }
 
   private beginNewCalculation() {
-    this.lastCalculation = this.currentCalculation;
     this.currentCalculation = new Calculation();
   }
 
