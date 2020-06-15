@@ -88,6 +88,9 @@ export class Calculation {
     }
   
     toString(): string {
+      if (this.firstOperand === '') {
+          return '';
+      }
       let output = this.formatNumber(this.firstOperand);
       if (this.operation !== '') {
         output += ' ' + this.operation;
@@ -124,12 +127,11 @@ export class Calculation {
         return this.firstOperand;
     }
 
-    allowsPoint(): boolean {
-        return !this.getCurrentOperand().includes('.');
-    }
-
-    allowsZero(): boolean {
-        return this.getCurrentOperand() !== '0';
-    }
+    allowsPoint = () => !this.getCurrentOperand().includes('.');
+    allowsZero = () => this.getCurrentOperand() !== '0';
+    allowsReset = () => this.firstOperand !== '';
+    allowsOperations = () => this.firstOperand !== '';
+    allowsEquals = () => !this.isCalculated && this.secondOperand !== '';
+    allowsBack = () => this.firstOperand !== '';
 
   }

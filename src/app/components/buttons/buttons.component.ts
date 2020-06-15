@@ -17,8 +17,11 @@ export class ButtonsComponent implements OnInit {
     this.calculationService.handleInput(input);
   }
 
-  allowsPoint(): boolean {
-    return this.calculationService.currentCalculation.allowsPoint();
-  }
+  allowsPoint = () => this.calculationService.currentCalculation.allowsPoint();
+  allowsReset = () => this.calculationService.currentCalculation.allowsReset();
+  allowsZero = () => this.calculationService.currentCalculation.allowsZero();
+  allowsOperations = () => this.calculationService.currentCalculation.allowsOperations();
+  allowsEquals = () => this.calculationService.currentCalculation.allowsEquals();
+  allowsBack = () => this.calculationService.currentCalculation.allowsBack();
 
 }

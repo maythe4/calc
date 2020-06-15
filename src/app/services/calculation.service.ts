@@ -22,15 +22,14 @@ export class CalculationService {
   handleInput(input: string) {
     if (this.isOperandInput(input)) {
       this.handleOperand(input);
-    }
-    else if (this.isOperationInput(input)) {
+    } else if (this.isOperationInput(input)) {
       this.handleOperation(input);
-    }
-    else if (input === '=') {
+    } else if (input === '=') {
       this.calculate();
-    }
-    else if (input === '<') {
+    } else if (input === '<') {
       this.handleBack();
+    } else if (input === 'r') {
+      this.resetCurrentCalculation();
     }
   }
 
@@ -87,6 +86,11 @@ export class CalculationService {
   {
     this.beginNewCalculation();
     this.currentCalculation.firstOperand = this.lastCalculation.result.toString();
+  }
+
+  resetCurrentCalculation() {
+    this.currentCalculation = new Calculation();
+    this.updatedSource.next();
   }
 
 }
