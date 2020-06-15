@@ -16,10 +16,25 @@ export class Calculation {
 
     handleOperand(input: string) {
         if (this.firstOperandIsSet) {
-            this.secondOperand += input;
+            this.secondOperand = this.prepareOperandInput(this.secondOperand, input);
         } else {
-            this.firstOperand += input;
+            this.firstOperand = this.prepareOperandInput(this.firstOperand, input);
         }
+    }
+
+    prepareOperandInput(operand: string, input: string): string {
+        if (input === '.') {
+            if (operand.includes(input)) {
+                return operand;
+            } else if (operand === '') {
+                return '0.';
+            }
+        } else if (input === '0') {
+            if (operand === '0') {
+                return operand;
+            }
+        }
+        return operand + input;
     }
 
     handleOperation(input: string) {
@@ -88,6 +103,9 @@ export class Calculation {
     }
 
     private formatNumber(input: string): string {
+        if (input.endsWith('.')) {
+            return input.slice(0, -1) + ',';
+        }
         const n = Number(input);
         return this.numberToString(n);
     }
@@ -95,6 +113,23 @@ export class Calculation {
     private numberToString(input: number): string {
         const s = Intl.NumberFormat('de-DE').format(input);
         return s;
+    }
+
+    getCurrentOperand(): string {
+        if (this.isCalculated) {
+            return '';
+        } else if (this.firstOperandIsSet) {
+            return this.secondOperand
+        }
+        return this.firstOperand;
+    }
+
+    allowsPoint(): boolean {
+        return !this.getCurrentOperand().includes('.');
+    }
+
+    allowsZero(): boolean {
+        return this.getCurrentOperand() !== '0';
     }
 
   }

@@ -14,7 +14,9 @@
         </div>
         <div class="centered-container">
             <a class="pure-button margin-button" (click)="handleClick('<')">&#8592;</a>
-            <a class="pure-button margin-button" (click)="handleClick('.')">,</a>
+            <a class="pure-button margin-button"
+                [ngClass]="{ 'pure-button-disabled': !allowsPoint() }"
+                (click)="handleClick('.')">,</a>
             <a class="pure-button margin-button" (click)="handleClick('+')">&#43;</a>
             <a class="pure-button margin-button" (click)="handleClick('-')">&#8722;</a>
             <a class="pure-button margin-button" (click)="handleClick('*')">&#215;</a>
