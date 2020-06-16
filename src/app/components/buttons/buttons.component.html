@@ -1,42 +1,40 @@
 <div class="framed">
     <div class="half-padding">
         <div class="centered-container">
-            <a class="pure-button margin-button" (click)="handleClick('1')">1</a>
-            <a class="pure-button margin-button" (click)="handleClick('2')">2</a>
-            <a class="pure-button margin-button" (click)="handleClick('3')">3</a>
-            <a class="pure-button margin-button" (click)="handleClick('4')">4</a>
-            <a class="pure-button margin-button" (click)="handleClick('5')">5</a>
-            <a class="pure-button margin-button" (click)="handleClick('6')">6</a>
-            <a class="pure-button margin-button" (click)="handleClick('7')">7</a>
-            <a class="pure-button margin-button" (click)="handleClick('8')">8</a>
-            <a class="pure-button margin-button" (click)="handleClick('9')">9</a>
-            <a class="pure-button margin-button"
+            <a class="pure-button fixed-size-button" (click)="handleClick('1')">1</a>
+            <a class="pure-button fixed-size-button" (click)="handleClick('2')">2</a>
+            <a class="pure-button fixed-size-button" (click)="handleClick('3')">3</a>
+            <a class="pure-button fixed-size-button" (click)="handleClick('4')">4</a>
+            <a class="pure-button fixed-size-button" (click)="handleClick('5')">5</a>
+            <a class="pure-button fixed-size-button" (click)="handleClick('6')">6</a>
+            <a class="pure-button fixed-size-button" (click)="handleClick('7')">7</a>
+            <a class="pure-button fixed-size-button" (click)="handleClick('8')">8</a>
+            <a class="pure-button fixed-size-button" (click)="handleClick('9')">9</a>
+            <a class="pure-button fixed-size-button"
                 [ngClass]="{ 'pure-button-disabled': !allowsZero() }"
                 (click)="handleClick('0')">0</a>
-        </div>
-        <div class="centered-container">
-            <a class="pure-button margin-button"
+            <a class="pure-button fixed-size-button"
                 [ngClass]="{ 'pure-button-disabled': !allowsBack() }"
                 (click)="handleClick('<')">&#x2190;</a>
-            <a class="pure-button margin-button"
+            <a class="pure-button fixed-size-button"
                 [ngClass]="{ 'pure-button-disabled': !allowsReset() }"
                 (click)="handleClick('r')">&#x2606;</a>
-            <a class="pure-button margin-button"
+            <a class="pure-button fixed-size-button"
                 [ngClass]="{ 'pure-button-disabled': !allowsPoint() }"
                 (click)="handleClick('.')">,</a>
-            <a class="pure-button margin-button"
+            <a class="pure-button fixed-size-button"
                 [ngClass]="{ 'pure-button-disabled': !allowsOperations() }"
                 (click)="handleClick('+')">&#x2b;</a>
-            <a class="pure-button margin-button"
+            <a class="pure-button fixed-size-button"
                 [ngClass]="{ 'pure-button-disabled': !allowsOperations() }"
                 (click)="handleClick('-')">&#x2013;</a>
-            <a class="pure-button margin-button"
+            <a class="pure-button fixed-size-button"
                 [ngClass]="{ 'pure-button-disabled': !allowsOperations() }"
                 (click)="handleClick('*')">&#xd7;</a>
-            <a class="pure-button margin-button"
+            <a class="pure-button fixed-size-button"
                 [ngClass]="{ 'pure-button-disabled': !allowsOperations() }"
                 (click)="handleClick('/')">&#xf7;</a>
-            <a class="pure-button margin-button"
+            <a class="pure-button fixed-size-button"
                 [ngClass]="{ 'pure-button-disabled': !allowsEquals() }"
                 (click)="handleClick('=')">&#x3d;</a>
         </div>
