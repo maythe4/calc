@@ -93,11 +93,11 @@ export class Calculation {
       }
       let output = this.formatNumber(this.firstOperand);
       if (this.operation !== '') {
-        output += ' ' + this.operation;
+        output += ' ' + this.formatOperation();
         if (this.secondOperand !== '') {
           output += ' ' + this.formatNumber(this.secondOperand);
           if (this.isCalculated) {
-            output += ' = ' + this.numberToString(this.result);
+            output += ' \u003d ' + this.numberToString(this.result);
           }
         }
       }
@@ -116,6 +116,20 @@ export class Calculation {
     private numberToString(input: number): string {
         const s = Intl.NumberFormat('de-DE').format(input);
         return s;
+    }
+
+    private formatOperation(): string {
+        switch (this.operation) {
+            case '+':
+                return '\u002b';
+            case '-':
+                return '\u2013';
+            case '*':
+                return '\u00d7';
+            case '/':
+                return '\u00f7';
+        }
+        return '';
     }
 
     getCurrentOperand(): string {

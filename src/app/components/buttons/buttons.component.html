@@ -17,28 +17,28 @@
         <div class="centered-container">
             <a class="pure-button margin-button"
                 [ngClass]="{ 'pure-button-disabled': !allowsBack() }"
-                (click)="handleClick('<')">&#8592;</a>
+                (click)="handleClick('<')">&#x2190;</a>
             <a class="pure-button margin-button"
                 [ngClass]="{ 'pure-button-disabled': !allowsReset() }"
-                (click)="handleClick('r')">&#9734;</a>
+                (click)="handleClick('r')">&#x2606;</a>
             <a class="pure-button margin-button"
                 [ngClass]="{ 'pure-button-disabled': !allowsPoint() }"
                 (click)="handleClick('.')">,</a>
             <a class="pure-button margin-button"
                 [ngClass]="{ 'pure-button-disabled': !allowsOperations() }"
-                (click)="handleClick('+')">&#43;</a>
+                (click)="handleClick('+')">&#x2b;</a>
             <a class="pure-button margin-button"
                 [ngClass]="{ 'pure-button-disabled': !allowsOperations() }"
-                (click)="handleClick('-')">&#8722;</a>
+                (click)="handleClick('-')">&#x2013;</a>
             <a class="pure-button margin-button"
                 [ngClass]="{ 'pure-button-disabled': !allowsOperations() }"
-                (click)="handleClick('*')">&#215;</a>
+                (click)="handleClick('*')">&#xd7;</a>
             <a class="pure-button margin-button"
                 [ngClass]="{ 'pure-button-disabled': !allowsOperations() }"
-                (click)="handleClick('/')">&#247;</a>
+                (click)="handleClick('/')">&#xf7;</a>
             <a class="pure-button margin-button"
                 [ngClass]="{ 'pure-button-disabled': !allowsEquals() }"
-                (click)="handleClick('=')">&#61;</a>
+                (click)="handleClick('=')">&#x3d;</a>
         </div>
     </div>
 </div>
