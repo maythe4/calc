@@ -93,4 +93,16 @@ export class CalculationService {
     this.updatedSource.next();
   }
 
+  pasteInput(input: string) {
+    if (this.currentCalculation.isCalculated) {
+      this.beginNewCalculation();
+    }
+    if (this.currentCalculation.firstOperandIsSet) {
+      this.currentCalculation.secondOperand = input;
+    } else {
+      this.currentCalculation.firstOperand = input;
+    }
+    this.updatedSource.next();
+  }
+
 }

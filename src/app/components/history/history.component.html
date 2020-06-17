@@ -1,7 +1,23 @@
 <div class="framed">
     <h2>Historie</h2>
     <ul class="list">
-        <li *ngFor="let entry of entries">{{ entry }}</li>
+        <li *ngFor="let entry of entries">
+            {{ getFormatedDate(entry.date) }}:
+            <a class="pure-button"
+                (click)="pasteFirstOperand(entry)">
+                {{ entry.calculation.getFormatedFirstOperand() }}
+            </a>
+            {{ entry.calculation.formatOperation() }}
+            <a class="pure-button"
+                (click)="pasteSecondOperand(entry)">
+                {{ entry.calculation.getFormatedSecondOperand() }}
+            </a>
+            &#x3d;
+            <a class="pure-button"
+                (click)="pasteResult(entry)">
+                {{ entry.calculation.getFormatedResult() }}
+            </a>
+        </li>
     </ul>
     <div class="buttons-container">
         <a class="pure-button margin-button"

@@ -91,18 +91,30 @@ export class Calculation {
       if (this.firstOperand === '') {
           return '';
       }
-      let output = this.formatNumber(this.firstOperand);
+      let output = this.getFormatedFirstOperand();
       if (this.operation !== '') {
         output += ' ' + this.formatOperation();
         if (this.secondOperand !== '') {
-          output += ' ' + this.formatNumber(this.secondOperand);
+          output += ' ' + this.getFormatedSecondOperand();
           if (this.isCalculated) {
-            output += ' \u003d ' + this.numberToString(this.result);
+            output += ' \u003d ' + this.getFormatedResult();
           }
         }
       }
   
       return output;
+    }
+
+    getFormatedFirstOperand(): string {
+        return this.formatNumber(this.firstOperand);
+    }
+
+    getFormatedSecondOperand(): string {
+        return this.formatNumber(this.secondOperand);
+    }
+
+    getFormatedResult(): string {
+        return this.numberToString(this.result);
     }
 
     private formatNumber(input: string): string {
@@ -118,7 +130,7 @@ export class Calculation {
         return s;
     }
 
-    private formatOperation(): string {
+    formatOperation(): string {
         switch (this.operation) {
             case '+':
                 return '\u002b';
