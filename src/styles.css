@@ -61,8 +61,12 @@ h2 {
 }
 
 .buttons-container {
-    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
     justify-content: space-between;
+    padding: 5px;
     border-top: 1px solid rgba(0, 0, 0, .3);
 }
 
@@ -77,4 +81,9 @@ h2 {
 #display {
     margin: 10px;
     text-align: center;
+}
+
+.history-date {
+    font-size: 14px;
+    margin-bottom: 4px;
 }

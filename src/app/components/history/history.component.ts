@@ -9,15 +9,18 @@ import { CalculationService } from 'src/app/services/calculation.service';
 })
 export class HistoryComponent implements OnInit {
   entries: HistoryEntry[];
+  showDate: boolean;
 
   constructor(private historyService: HistoryService,
     private calculationService: CalculationService) { 
     this.historyService.updated$.subscribe(() => {
-    this.entries = this.historyService.entries;
+      this.entries = this.historyService.entries;
+      this.showDate = this.historyService.showDate;
   });}
 
   ngOnInit(): void {
-    this.entries = [];
+    this.entries = this.historyService.entries;
+    this.showDate = this.historyService.showDate;
   }
 
   deleteHistory() {
@@ -52,6 +55,10 @@ export class HistoryComponent implements OnInit {
 
   pasteResult(entry: HistoryEntry) {
     this.calculationService.pasteInput(entry.calculation.result.toString());
+  }
+
+  toggleShowDate() {
+    this.historyService.toggleShowDate();
   }
 
 }

@@ -13,12 +13,14 @@ export interface HistoryEntry {
 })
 export class HistoryService {
   entries: HistoryEntry[];
+  showDate: boolean;
   private updatedSource = new Subject();
   
   updated$ = this.updatedSource.asObservable();
 
   constructor(private calculationService: CalculationService) { 
     this.entries = [];
+    this.showDate = false;
     this.calculationService.calculated$.subscribe(() => {
       this.addEntry(this.calculationService.lastCalculation);
       this.updatedSource.next();
@@ -36,6 +38,11 @@ export class HistoryService {
 
   deleteHistory() {
     this.entries = [];
+    this.updatedSource.next();
+  }
+
+  toggleShowDate() {
+    this.showDate = !this.showDate;
     this.updatedSource.next();
   }
 

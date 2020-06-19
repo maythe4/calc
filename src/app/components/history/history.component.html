@@ -2,7 +2,9 @@
     <h2>Historie</h2>
     <ul class="list">
         <li *ngFor="let entry of entries">
-            {{ getFormatedDate(entry.date) }}:
+            <div *ngIf="showDate" class="history-date">
+                {{ getFormatedDate(entry.date) }}
+            </div>
             <a class="pure-button"
                 (click)="pasteFirstOperand(entry)">
                 {{ entry.calculation.getFormatedFirstOperand() }}
@@ -24,5 +26,16 @@
             (click)="deleteHistory()">
                 löschen
         </a>
+        <a *ngIf="showDate; else dateOn"
+            class="pure-button margin-button"
+            (click)="toggleShowDate()">
+                Datum ausblenden
+        </a>
+        <ng-template #dateOn>
+            <a class="pure-button margin-button"
+                (click)="toggleShowDate()">
+                    Datum anzeigen
+            </a>
+        </ng-template>
     </div>
 </div>
