@@ -14,13 +14,13 @@ export class HistoryComponent implements OnInit {
   constructor(private historyService: HistoryService,
     private calculationService: CalculationService) { 
     this.historyService.updated$.subscribe(() => {
-      this.entries = this.historyService.entries;
-      this.showDate = this.historyService.showDate;
+      this.entries = this.historyService.getHistory();
+      this.showDate = this.historyService.getShowDate();
   });}
 
   ngOnInit(): void {
-    this.entries = this.historyService.entries;
-    this.showDate = this.historyService.showDate;
+    this.entries = this.historyService.getHistory();
+    this.showDate = this.historyService.getShowDate();
   }
 
   deleteHistory() {

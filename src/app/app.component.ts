@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { StorageService } from './services/storage.service';
 
 @Component({
   selector: 'calc-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'calc';
+
+  constructor(private storageService: StorageService) { }
+
+  ngOnInit() {
+    this.storageService.loadData();
+  }
 }

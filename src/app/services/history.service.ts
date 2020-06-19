@@ -12,8 +12,8 @@ export interface HistoryEntry {
   providedIn: 'root'
 })
 export class HistoryService {
-  entries: HistoryEntry[];
-  showDate: boolean;
+  private entries: HistoryEntry[];
+  private showDate: boolean;
   private updatedSource = new Subject();
   
   updated$ = this.updatedSource.asObservable();
@@ -44,6 +44,32 @@ export class HistoryService {
   toggleShowDate() {
     this.showDate = !this.showDate;
     this.updatedSource.next();
+  }
+
+  getHistory(): HistoryEntry[] {
+    return this.entries;
+  }
+
+  setHistory(entries: HistoryEntry[]) {
+    this.entries = entries;
+    this.entries.forEach(entry => {
+      const calculation = new Calculation();
+      calculation.firstOperand = entry.calculation.firstOperand;
+      calculation.handleOperation(entry.calculation.operation);
+      calculation.secondOperand = entry.calculation.secondOperand;
+      calculation.calculate();
+      entry.calculation = calculation;
+      entry.date = new Date(entry.date);
+    });
+    this.updatedSource.next();
+  }
+
+  getShowDate(): boolean {
+    return this.showDate;
+  }
+
+  setShowDate(showDate: boolean) {
+    this.showDate = showDate;
   }
 
 }
