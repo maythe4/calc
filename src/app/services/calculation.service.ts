@@ -24,17 +24,17 @@ export class CalculationService {
       this.handleOperand(input);
     } else if (this.isOperationInput(input)) {
       this.handleOperation(input);
-    } else if (input === '=') {
+    } else if (input === '=' || input === 'Enter') {
       this.calculate();
-    } else if (input === '<') {
+    } else if (input === '<' || input === 'Backspace') {
       this.handleBack();
-    } else if (input === 'r') {
+    } else if (input === 'r' || input === 'Escape') {
       this.resetCurrentCalculation();
     }
   }
 
   private isOperandInput(input: string): boolean {
-    const possibleInputs = '1234567890.';
+    const possibleInputs = '1234567890.,';
     return input.length === 1 && possibleInputs.includes(input);
   }
 

@@ -23,6 +23,7 @@ export class Calculation {
     }
 
     prepareOperandInput(operand: string, input: string): string {
+        input = this.replaceIfNeeded(input);
         if (input === '.') {
             if (operand.includes(input)) {
                 return operand;
@@ -35,6 +36,14 @@ export class Calculation {
             }
         }
         return operand + input;
+    }
+
+    private replaceIfNeeded(input: string): string {
+        if (input === ',') {
+            return '.';
+        }
+
+        return input;
     }
 
     handleOperation(input: string) {
