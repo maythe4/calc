@@ -52,7 +52,9 @@ export class CalculationService {
   }
 
   private handleOperation(input: string) {
-    if (this.currentCalculation.isCalculated) {
+    if (this.currentCalculation.firstOperand === '') {
+      return;
+    } else if (this.currentCalculation.isCalculated) {
       this.beginNewCalculationWithResult();
     } else if (this.currentCalculation.secondOperand !== '') {
       this.calculate();
