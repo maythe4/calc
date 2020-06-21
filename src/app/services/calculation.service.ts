@@ -35,7 +35,14 @@ export class CalculationService {
 
   private isOperandInput(input: string): boolean {
     const possibleInputs = '1234567890.,';
-    return input.length === 1 && possibleInputs.includes(input);
+    if (input.length === 1) 
+    {
+      return possibleInputs.includes(input);
+    } else if (input === '000') {
+      return true;
+    }
+
+    return false;
   }
 
   private handleOperand(input: string) {

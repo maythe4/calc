@@ -34,6 +34,10 @@ export class Calculation {
             if (operand === '0') {
                 return operand;
             }
+        } else if (input === '000') {
+            if (operand === '') {
+                return '1000';
+            }
         }
         return operand + input;
     }

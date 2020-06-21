@@ -14,6 +14,8 @@
                 [ngClass]="{ 'pure-button-disabled': !allowsZero() }"
                 (click)="handleClick('0')">0</a>
             <a class="pure-button fixed-size-button"
+                (click)="handleClick('000')">000</a>
+            <a class="pure-button fixed-size-button"
                 [ngClass]="{ 'pure-button-disabled': !allowsBack() }"
                 (click)="handleClick('<')">&#x2190;</a>
             <a class="pure-button fixed-size-button"
