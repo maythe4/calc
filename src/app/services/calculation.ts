@@ -5,7 +5,7 @@ export class Calculation {
     secondOperand: string;
     result: number;
     isCalculated: boolean;
-  
+
     constructor() {
       this.firstOperand = '';
       this.firstOperandIsSet = false;
@@ -99,7 +99,7 @@ export class Calculation {
         }
         return this.isCalculated;
     }
-  
+
     toString(): string {
       if (this.firstOperand === '') {
           return '';
@@ -114,7 +114,7 @@ export class Calculation {
           }
         }
       }
-  
+
       return output;
     }
 
@@ -152,7 +152,7 @@ export class Calculation {
             case '*':
                 return '\u00d7';
             case '/':
-                return '\u00f7';
+                return '\u002f';
         }
         return '';
     }
